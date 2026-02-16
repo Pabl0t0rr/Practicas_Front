@@ -1,0 +1,25 @@
+.fraseAleatoria {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+}
+
+.fraseAleatoria h1 {
+    color: yellow;
+} 
+
+.fraseAleatoria h2 {
+    color: white;
+}   
+
+.clickSuperior, .clickInferior {
+    width : 95%;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    justify-content: space-between;
+    color: yellow;
+    
+}

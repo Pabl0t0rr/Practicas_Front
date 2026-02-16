@@ -1,0 +1,86 @@
+#root {
+  width: 100%;
+}
+
+body {
+    background: rgb(1, 2, 47);
+    background-image: url("Fondo.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.titulo{
+  display: flex;
+  justify-content: center;
+  margin : 20px 0px 0px 0px;
+}
+
+.mainContainer {
+    width : 100%;
+    display : flex;
+    flex-direction : row;
+    justify-content : space-between;
+    align-items : center;  
+    gap: 20px;
+}
+
+.leftContainer {
+    width : 14%;
+    display : flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: grey;
+    margin-left: 30px; 
+    
+}
+
+.centerContainer {
+    height: 500px;
+    width : 100%;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items : center;
+    background-color: rgb(63, 63, 203);
+    color: white;
+    padding: 10px;
+    
+}
+
+.rightContainer {
+    width : 25%;
+    display : flex;
+    flex-direction: column; 
+    align-items: center;
+    
+}
+.rightContainerText {
+    color: white;
+}
+
+.errorContainer {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.bottonContainer {
+    width: 100%;
+    display : flex;
+    flex-direction: row;
+    justify-content : space-around;
+    align-items : flex-end;
+    background-color: rgb(59, 58, 58);
+    color: white;
+}
+
+.fuegoContainer{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	background: url("Fuego.gif");
+	background-size: auto 100%;
+    margin-top: auto;
+}

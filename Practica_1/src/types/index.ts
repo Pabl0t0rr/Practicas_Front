@@ -1,0 +1,2 @@
+
+import Frase from "./frase";
