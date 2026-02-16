@@ -1,0 +1,61 @@
+#root {
+  width: 100%;
+}
+
+body {
+    background: black;
+    background-image: url("Fondo.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.titulo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.btn_frase{
+  display : flex;
+  justify-content: space-between; /* Separa logo y menú a los extremos */
+  align-items: center; /* Centra verticalmente los elementos */
+  color: blue;
+}
+
+.mainContainer {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    width : 100%;
+}
+
+.leftContainer {
+    display : flex;
+    justify-content : left;
+    flex-direction: column;
+}
+
+.rightContainer {
+    display : flex;
+    justify-content : right;
+    align-items : right;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bottonContainer {
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width : 100%;
+}
+
+.fuego {
+    
+
+}
