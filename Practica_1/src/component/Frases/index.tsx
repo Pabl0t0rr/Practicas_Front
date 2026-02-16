@@ -1,42 +1,55 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Frase } from "../../types/frase";
 import { api } from "../../api/api";
 import "./style.css";
+import "../../App.css"
 
-export const Frases = (params: { pulsacion: boolean }) => {
+export const Frases = () => {
 
+    const [numero, setNumero] = useState<number>(0);
     const [frase, setFrase] = useState<Frase | null>(null);
-    const [contador, setContador] = useState(0);
     const valorMaxCont = 10;
 
-    // Cada vez que cambie pulsacion → reinicia contador
-useEffect(() => {
-    setContador(0);
-}, [params.pulsacion]);
+    const conseguirFrase = async () => {
+        let n = 0;
+        while(n < valorMaxCont) {
+        await new Promise(frases => {
+            
+            api.get("").then((e) => {
+                setNumero(e.data.wisdom.split(".")[0])
+                setFrase(e.data);
+        })
+        setTimeout(frases, 500)
+        n++;
+    })
+    }
+}
 
-    // Incrementar contador y setTimer
-    useEffect(() => {
-        if (contador >= valorMaxCont) return;
-
-        const timer = setTimeout(() => {
-            setContador((c) => c + 1);
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, [contador, params.pulsacion]);
-
-    // Pedr las frases
-    useEffect(() => {
-        if (contador > 0 && contador <= valorMaxCont) {
-            api.get("").then((e) => setFrase(e.data));
-        }
-    }, [contador]);
 
     return (
         <>
+        <div className = "centerContainer" onClick={() => conseguirFrase()}>
         {frase ? <div className = "fraseAleatoria">
-                {frase.wisdom}
-            </div> : <div> Cargando frases...</div>}
+                <h1> Lesson #{numero}</h1>
+                <h2>{frase.wisdom}</h2>
+            </div> : 
+            <>
+            <div className = "clickSuperior">
+                <h2>Click here first</h2>
+                <h2>Click here first</h2>
+            </div>
+            <h1> Click Here</h1>
+            <h2>To learn your lesson</h2>
+
+            <div className = "clickInferior">
+                <h2>Click here first</h2>
+                <h2>Click here first</h2>
+          </div>
+            </>
+            
+            
+            }
+            </div>
         </>
     );
 };
