@@ -9,9 +9,13 @@ export const Frases = (params: { pulsacion: boolean }) => {
     const [contador, setContador] = useState(0);
     const valorMaxCont = 10;
 
+    // Cada vez que cambie pulsacion → reinicia contador
+useEffect(() => {
+    setContador(0);
+}, [params.pulsacion]);
+
     // Incrementar contador y setTimer
     useEffect(() => {
-        if (!params.pulsacion) return;
         if (contador >= valorMaxCont) return;
 
         const timer = setTimeout(() => {
@@ -26,7 +30,7 @@ export const Frases = (params: { pulsacion: boolean }) => {
         if (contador > 0 && contador <= valorMaxCont) {
             api.get("").then((e) => setFrase(e.data));
         }
-    }, [contador, params.pulsacion]);
+    }, [contador]);
 
     return (
         <>
