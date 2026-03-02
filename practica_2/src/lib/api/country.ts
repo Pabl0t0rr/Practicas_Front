@@ -5,9 +5,9 @@ export const getCountryNameBySearch = async (name : string) =>  {
     return response.data;
 }
 
-export const getCountryByCode = async (code: string) => {
+export const getCountryByFullName= async (code: string) => {
   const response = await api.get(
-    `alpha/${code}?fields=name,flag,capital,region,population,languages`
+    `name/${code}?fields=name,flag,capital,region,population,languages`
   );
   return response.data[0];
 }

@@ -3,7 +3,7 @@
 import { useParams,useRouter} from "next/navigation"
 import { Country } from "@/types";
 import { useEffect, useState } from "react";
-import { getCountryByCode } from "@/lib/api/country";
+import { getCountryByFullName } from "@/lib/api/country";
 import { AxiosError } from "axios";
 
 const getCountryInfo = () => {
@@ -22,7 +22,7 @@ const getCountryInfo = () => {
         setLoading(true);
         setError(null);
 
-        getCountryByCode(nameCountry as string).then ((c) => {
+        getCountryByFullName(nameCountry as string).then ((c) => {
             setPais(c);
         }).catch((e : AxiosError) => {
             setError(e.message);
