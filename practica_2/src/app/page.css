@@ -1,0 +1,14 @@
+.countriesMainContainer {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   justify-content: center;
+}
+.searchBoxMain {
+   display: flex;
+   gap: 8px;
+   padding: 8px;
+}
+.searchBoxMain button {
+   cursor: pointer;
+}

@@ -1,79 +1,62 @@
 'use client'
 
-import { getCountryNameBySearch } from "@/lib/api/country";
-import { Country } from "@/types";
-import { AxiosError } from "axios";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { getCountryNameBySearch } from '@/lib/api/country'
+import { Country } from '@/types'
+import { AxiosError } from 'axios'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import CountryCard from './components/countryCard'
 
-
+import './page.css'
 
 const Home = () => {
+   const [palabra, setPalabra] = useState<string | null>(null)
+   const [palabraFinal, setPalabraFinal] = useState<string | null>('')
 
-  const [palabra, setPalabra] = useState<string | null> (null); 
-  const [palabraFinal , setPalabraFinal] = useState<string | null> ("");
+   const [pais, setPais] = useState<Country[]>([])
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState<string | null>(null)
 
-  const [pais, setPais] = useState<Country[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+   const router = useRouter()
 
-  const router = useRouter();
+   useEffect(() => {
+      if (!palabraFinal) return
 
-  useEffect (() => {
-    if(!palabraFinal) return;
+      setLoading(true)
+      setError(null)
 
-    setLoading(true);
-    setError(null);
+      getCountryNameBySearch(palabraFinal)
+         .then((p) => {
+            setPais(p)
+         })
+         .catch((e: AxiosError) => {
+            setError(e.message)
+         })
+         .finally(() => {
+            setLoading(false)
+         })
+   }, [palabraFinal])
 
-    getCountryNameBySearch(palabraFinal).then ((p) => {
-      setPais(p);
-    }).catch((e : AxiosError) => {
-      setError(e.message);
-    }).finally(() => {
-      setLoading(false);
-    })
-
-  }, [palabraFinal]);
-   
-  return (
-    <div>
-      <h1>Buscador de paises</h1>
+   return (
       <div>
-        <input onChange={(p) => setPalabra(p.target.value)}></input>
-        <button onClick={() => setPalabraFinal(palabra)}>Buscar</button>
-    
+         <h1>Buscador de paises</h1>
+         <br />
+         <div className="searchBoxMain">
+            <input onChange={(p) => setPalabra(p.target.value)}></input>
+            <button onClick={() => setPalabraFinal(palabra)}>Buscar</button>
+         </div>
+
+         {loading && <h1> Loading...</h1>}
+         {error && <h1> Error: {error}</h1>}
+
+         <div className="countriesMainContainer">
+            {!loading &&
+               !error &&
+               pais.length > 0 &&
+               pais.map((p) => <CountryCard key={p.name.common} country={p}></CountryCard>)}
+         </div>
       </div>
-
-     {loading && <h1> Loading...</h1>}
-     {error && <h1> Error: {error}</h1>}
-
-     <div>
-      {!loading && !error && pais.length > 0 &&
-      pais.map((p) =>{
-        return (
-          <>
-            <div className = "" key={p.name.common}>
-              <button onClick={() => {
-                  router.push("/country/"+ p.name.common)
-                }}>
-                  <div className = "">
-                    <p>Nombre pais: {p.name.common}</p>
-                    <p>Bandera: {p.flag}</p>
-                    <p>Code : {p.cca2}</p>
-                  </div>
-                </button>
-              
-            </div>
-          </>
-        )
-      })}
-     </div>
-
-    </div>
-
-
-    
-  )
+   )
 }
 
-export default Home;
+export default Home
