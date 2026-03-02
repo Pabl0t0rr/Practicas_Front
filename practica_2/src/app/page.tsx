@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 
 
-export const Home = () => {
+const Home = () => {
 
   const [palabra, setPalabra] = useState<string | null> (null); 
   const [palabraFinal , setPalabraFinal] = useState<string | null> ("");
@@ -51,13 +51,20 @@ export const Home = () => {
       {!loading && !error && pais.length > 0 &&
       pais.map((p) =>{
         return (
-          <div key={p.name.common}>
-             <button onClick={() => {
-                router.push("/country/"+ p.name.common)
-              }}>Ver detalles</button>
-            <h2>{p.name.common}</h2>
-            
-          </div>
+          <>
+            <div className = "" key={p.name.common}>
+              <button onClick={() => {
+                  router.push("/country/"+ p.name.common)
+                }}>
+                  <div className = "">
+                    <p>Nombre pais: {p.name.common}</p>
+                    <p>Bandera: {p.flag}</p>
+                    <p>Code : {p.cca2}</p>
+                  </div>
+                </button>
+              
+            </div>
+          </>
         )
       })}
      </div>
