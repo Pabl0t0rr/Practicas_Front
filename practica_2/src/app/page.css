@@ -1,14 +1,26 @@
-.countriesMainContainer {
+.mainContainer {
+   background-color: blueviolet;
    display: flex;
-   flex-wrap: wrap;
-   gap: 1rem;
-   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   padding: 2rem;
 }
+
 .searchBoxMain {
    display: flex;
+   justify-content: center;
    gap: 8px;
    padding: 8px;
 }
 .searchBoxMain button {
    cursor: pointer;
+}
+
+.countriesMainContainer {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   padding: 2rem;
+   max-width: 1200px;
+   background-color: aqua;
 }

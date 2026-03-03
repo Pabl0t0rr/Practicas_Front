@@ -4,7 +4,7 @@ import { getAllCountries, getCountryNameBySearch } from '@/lib/api/country'
 import { Country } from '@/types'
 import { AxiosError } from 'axios'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+
 import CountryCard from './components/countryCard'
 
 import './page.css'
@@ -16,8 +16,6 @@ const Home = () => {
    const [pais, setPais] = useState<Country[]>([])
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState<string | null>(null)
-
-   const router = useRouter()
 
    //Para iniciar la pagina con todos los paises cargados
    useEffect(() => {
@@ -50,7 +48,7 @@ const Home = () => {
    }, [palabraFinal])
 
    return (
-      <div>
+      <div className="mainContainer">
          <h1>Buscador de paises</h1>
          <br />
          <div className="searchBoxMain">
