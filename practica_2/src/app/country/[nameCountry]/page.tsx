@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { getCountryByFullName } from '@/lib/api/country'
 import { AxiosError } from 'axios'
 
-import './style.css'
+import './page.css'
 
 const getCountryInfo = () => {
    const { nameCountry } = useParams()
@@ -36,22 +36,24 @@ const getCountryInfo = () => {
    }, [nameCountry])
 
    return (
-      <div className="mainContainer">
-         {!loading && !error && pais && (
-            <div className="country-info">
-               <p>Nombre oficial: {pais?.name.official}</p>
-               <p>Bandera: {pais?.flag}</p>
-               <p>Capital: {pais?.capital}</p>
-               <p>Region: {pais?.region}</p>
-               <p>Poblacion: {pais?.population}</p>
-               <p>Idiomas: {Object.values(pais?.languages || {}).join(', ')}</p>
-               <button onClick={() => router.back()}>Volver</button>
-            </div>
-         )}
+      <>
+         <div className="mainContainer">
+            {!loading && !error && pais && (
+               <div className="country-info">
+                  <p>Nombre oficial: {pais?.name.official}</p>
+                  <p>Bandera: {pais?.flag}</p>
+                  <p>Capital: {pais?.capital}</p>
+                  <p>Region: {pais?.region}</p>
+                  <p>Poblacion: {pais?.population}</p>
+                  <p>Idiomas: {Object.values(pais?.languages || {}).join(', ')}</p>
+                  <button onClick={() => router.back()}>Volver</button>
+               </div>
+            )}
 
-         {!pais && loading && <p>Loading...</p>}
-         {error && <p>Error: {error}</p>}
-      </div>
+            {!pais && loading && <p>Loading...</p>}
+            {error && <p>Error: {error}</p>}
+         </div>
+      </>
    )
 }
 

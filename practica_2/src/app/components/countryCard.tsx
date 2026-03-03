@@ -19,8 +19,9 @@ const CountryCard = ({ country }: Props) => {
                }}
             >
                <div className="">
-                  <p>Nombre pais: {country.name.common}</p>
-                  <p>Bandera: {country.flag}</p>
+                  <p>
+                     {country.flag} {country.name.common}
+                  </p>
                </div>
             </button>
          </div>
