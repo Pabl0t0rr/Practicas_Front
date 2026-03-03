@@ -1,6 +1,6 @@
 'use client'
 
-import { getCountryNameBySearch } from '@/lib/api/country'
+import { getAllCountries, getCountryNameBySearch } from '@/lib/api/country'
 import { Country } from '@/types'
 import { AxiosError } from 'axios'
 import { useState, useEffect } from 'react'
@@ -19,6 +19,18 @@ const Home = () => {
 
    const router = useRouter()
 
+   //Para iniciar la pagina con todos los paises cargados
+   useEffect(() => {
+      getAllCountries()
+         .then((p) => {
+            setPais(p)
+         })
+         .catch((e: AxiosError) => {
+            setError(e.message)
+         })
+   }, [])
+
+   //Para el buscador
    useEffect(() => {
       if (!palabraFinal) return
 
