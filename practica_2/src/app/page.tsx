@@ -52,7 +52,14 @@ const Home = () => {
          <h1>Buscador de paises</h1>
          <br />
          <div className="searchBoxMain">
-            <input onChange={(p) => setPalabra(p.target.value)}></input>
+            <input
+               onChange={(p) => setPalabra(p.target.value)}
+               onKeyDown={(p) => {
+                  if (p.key === 'Enter') {
+                     setPalabraFinal(palabra)
+                  }
+               }}
+            ></input>
             <button onClick={() => setPalabraFinal(palabra)}>Buscar</button>
          </div>
 
