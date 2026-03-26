@@ -6,6 +6,10 @@ import AlbumCard from "../component/AlbumCard";
 import { getAlbumByArtistName } from "@/lib/api/songs";
 import { AxiosError } from "axios";
 
+import { useRouter } from "next/navigation";
+
+import "./page.css";
+
 const AlbumsPage = () => {
   const [palabra, setPalabra] = useState<string | null>(null);
   const [palabraFinal, setPalabraFinal] = useState<string | null>(null);
@@ -14,14 +18,19 @@ const AlbumsPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const router = useRouter();
+
   //Para buscar los datos
   useEffect(() => {
     //Inicializar estados
     setLoading(true);
     setError(null);
 
-    //Para poner por defecto coldplay si se busca con algo vacio
-    if (!palabraFinal) return;
+    //Para poner por defecto pablo si se busca con algo vacio
+    if (!palabraFinal) {
+      setPalabraFinal("pablo");
+      return;
+    }
 
     getAlbumByArtistName(palabraFinal)
       .then((s) => {
@@ -36,10 +45,10 @@ const AlbumsPage = () => {
   }, [palabraFinal]);
 
   return (
-    <div className="mainContainer">
+    <div className="mainContainerSearch">
       <h1>Buscador de Albums</h1>
       <br />
-      <div className="searchBoxMain">
+      <div className="searchContainer">
         <input
           onChange={(p) => setPalabra(p.target.value)}
           onKeyDown={(p) => {
@@ -49,6 +58,7 @@ const AlbumsPage = () => {
           }}
         ></input>
         <button onClick={() => setPalabraFinal(palabra)}>Buscar</button>
+        <button onClick={() => router.push("/")}>Pagina principal</button>
       </div>
 
       {loading && <h1> Loading...</h1>}

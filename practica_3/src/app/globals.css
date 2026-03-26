@@ -1,6 +1,6 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: linear-gradient(135deg, #ff9a9e, #fad0c4, #f9dad1);
+  --foreground: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,4 +46,8 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+button {
+  cursor: pointer;
 }

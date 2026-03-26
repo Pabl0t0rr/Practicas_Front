@@ -1,0 +1,41 @@
+.allWindow {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20%;
+  margin-top: 100px;
+}
+
+.allWindow h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.mainContainerHome {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.mainContainerHome button {
+  width: 80%;
+  height: 300px;
+  background: linear-gradient(135deg, #b984fa, #b8b9f5);
+  font-size: 2rem;
+  border: none;
+  border-radius: 20px;
+  color: #333;
+}
+
+.leftContainer,
+.rightContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}

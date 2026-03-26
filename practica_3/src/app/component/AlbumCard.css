@@ -1,0 +1,32 @@
+.albumCardContainer {
+  background: linear-gradient(135deg, #ffb3b8, #ffe0d4, #fce6e1);
+}
+
+.albumCardInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.albumCardInfo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.albumCardInfo p {
+  font-size: 1rem;
+  color: black;
+}
+
+.albumCardInfo button {
+  background: linear-gradient(135deg, #b984fa, #b8b9f5);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+}

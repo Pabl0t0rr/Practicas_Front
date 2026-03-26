@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="allWindow">
       <h1>Web de busquedas de canciones</h1>
-      <div className="mainContainer">
+      <div className="mainContainerHome">
         <div className="leftContainer">
           <button
             onClick={() => {
