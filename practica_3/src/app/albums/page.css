@@ -1,0 +1,45 @@
+.mainContainerSearch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 5px;
+}
+
+.mainContainerSearch h1 {
+  margin-top: 40px;
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.searchContainer input {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.searchContainer button {
+  background: linear-gradient(135deg, #b984fa, #b8b9f5);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.albumMainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

@@ -1,0 +1,17 @@
+.favContainer {
+  padding: 8px 0 0 8px;
+  gap: 8px;
+}
+
+.favContainer button {
+  background: linear-gradient(135deg, #b984fa, #b8b9f5);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 10px 0 10px 0;
+}
+
+.favContainer p {
+  margin-bottom: 10px;
+}
