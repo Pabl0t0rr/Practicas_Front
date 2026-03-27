@@ -5,12 +5,11 @@ import { Album } from "@/types";
 import { AxiosError } from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useListSong } from "@/context/MusicContent";
+
+import "./page.css";
 
 const getId = () => {
   const { id } = useParams();
-
-  const { addToList } = useListSong();
 
   const router = useRouter();
 
@@ -19,9 +18,9 @@ const getId = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getAlbumById(Number(id))
+    getAlbumById(id as string)
       .then((res: any) => {
-        setAlbum(res.results[0]);
+        setAlbum(res);
       })
       .catch((err: AxiosError) => {
         setError(err.message);
@@ -32,21 +31,20 @@ const getId = () => {
   }, []);
 
   return (
-    <div className="mainContainer">
+    <div className="mainContainerAlbumInfo">
       {!loading && !error && album && (
         <>
-          <button onClick={() => router.push("/")}>
-            Volver pagina principal
-          </button>
-          <button
-            onClick={() => {
-              if (album) {
-                addToList(album.collectionName);
-              }
-            }}
-          >
-            Añadir a favoritos
-          </button>
+          <div className="albumInfo">
+            <img src={album.artworkUrl100} />
+            <div className="albumText">
+              <p>Album: {album.collectionName}</p>
+              <p>Artist: {album.artistName}</p>
+              <p>Release Date: {album.releaseDate}</p>
+              <button onClick={() => router.push("/")}>
+                Volver pagina principal
+              </button>
+            </div>
+          </div>
         </>
       )}
 

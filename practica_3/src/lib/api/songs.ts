@@ -1,5 +1,5 @@
 import { api } from "./api";
-import { Album, AlbumResponse } from "@/types/song";
+import { AlbumResponse } from "@/types/song";
 
 export const getAlbumByArtistName = async (name: string) => {
   const response = await api.get<AlbumResponse>(
@@ -8,7 +8,7 @@ export const getAlbumByArtistName = async (name: string) => {
   return response.data.results;
 };
 
-export const getAlbumById = async (id: number) => {
-  const response = await api.get<Album>(`lookup?id=${id}&entity=album`);
-  return response.data;
+export const getAlbumById = async (id: string) => {
+  const response = await api.get<AlbumResponse>(`lookup?id=${id}`);
+  return response.data.results[0];
 };

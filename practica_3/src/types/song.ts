@@ -4,6 +4,7 @@ export type Album = {
   artistName: string;
   collectionName: string;
   artworkUrl100: string;
+  releaseDate: string;
 };
 
 export type AlbumResponse = {

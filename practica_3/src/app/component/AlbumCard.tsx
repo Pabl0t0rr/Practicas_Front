@@ -3,39 +3,72 @@
 import { Album } from "@/types";
 import { useRouter } from "next/navigation";
 import { useListSong } from "@/context/MusicContent";
+import { useEffect, useState } from "react";
+import { getAlbumById } from "@/lib/api/songs";
 
 import "./AlbumCard.css";
 
 type Props = {
-  song: Album;
+  albumId: string;
 };
 
-const AlbumCard = ({ song }: Props) => {
+const AlbumCard = ({ albumId }: Props) => {
   const router = useRouter();
 
-  //Para el contexto
-  const { addToList } = useListSong();
+  const [album, setAlbum] = useState<Album | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const { songs, addToList, deleteFromList } = useListSong();
+
+  const isFav = songs.includes(albumId);
+
+  useEffect(() => {
+    if (!albumId) return;
+
+    setLoading(true);
+
+    getAlbumById(albumId)
+      .then((res) => {
+        setAlbum(res);
+      })
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [albumId]);
 
   return (
-    <>
-      <div className="albumCardContainer">
-        <div className="albumCardInfo">
-          <img src={song.artworkUrl100} />
-          <p>Album: {song.collectionName}</p>
-          <p>Artist: {song.artistName}</p>
-          <button
-            onClick={() => {
-              router.push("/albums/" + song.collectionId);
-            }}
-          >
-            Ver detalles
-          </button>
-          <button onClick={() => addToList(song.collectionId.toString())}>
-            Añadir a fav
-          </button>
-        </div>
+    <div className="albumCardContainer">
+      <div className="albumCardInfo">
+        <img src={album?.artworkUrl100} />
+        <p>Album: {album?.collectionName}</p>
+        <p>Artist: {album?.artistName}</p>
+
+        <button
+          onClick={() => {
+            router.push("/albums/" + album?.collectionId);
+          }}
+        >
+          Ver detalles
+        </button>
+
+        <button
+          onClick={() =>
+            isFav
+              ? deleteFromList(album?.collectionId.toString() || "")
+              : addToList(album?.collectionId.toString() || "")
+          }
+        >
+          {isFav ? "Eliminar de fav" : "Añadir a fav"}
+        </button>
       </div>
-    </>
+
+      {!album && loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+    </div>
   );
 };
 

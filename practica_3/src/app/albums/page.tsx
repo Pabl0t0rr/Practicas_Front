@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import AlbumCard from "../component/AlbumCard";
 import { getAlbumByArtistName } from "@/lib/api/songs";
 import { AxiosError } from "axios";
-
 import { useRouter } from "next/navigation";
 
 import "./page.css";
@@ -69,7 +68,10 @@ const AlbumsPage = () => {
           !error &&
           songs.length > 0 &&
           songs.map((s) => (
-            <AlbumCard key={s.collectionId} song={s}></AlbumCard>
+            <AlbumCard
+              key={s.collectionId}
+              albumId={s.collectionId.toString()}
+            ></AlbumCard>
           ))}
       </div>
     </div>

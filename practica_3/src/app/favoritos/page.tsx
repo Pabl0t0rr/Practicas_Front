@@ -2,18 +2,23 @@
 
 import { useListSong } from "@/context/MusicContent";
 import { useRouter } from "next/navigation";
+import AlbumCard from "../component/AlbumCard";
+
+import "./page.css";
 
 const FavoritePage = () => {
   const { songs } = useListSong();
+
   const router = useRouter();
 
   return (
-    <div>
+    <div className="favContainer">
       <h1>Favoritos</h1>
       <button onClick={() => router.push("/")}>Ir a la principal</button>
-      <p>Canciones favoritas</p>
+      <p>Álbumes favoritos</p>
+      {songs.length === 0 && <p>No tienes favoritos aún</p>}
       {songs.map((fav) => {
-        return <p key={fav}>{fav}</p>;
+        return <AlbumCard key={fav} albumId={fav} />;
       })}
     </div>
   );
