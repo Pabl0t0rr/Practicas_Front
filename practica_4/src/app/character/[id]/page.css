@@ -1,0 +1,65 @@
+.characterPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.characterPage h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.characterInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  background: #7c77e1;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  max-width: 700px;
+  width: 100%;
+}
+
+.characterInfo img {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+}
+
+.characterInfoText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: auto;
+}
+
+.characterInfoText p {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  color: #e2e8f0;
+  background: #4941d9;
+  border-radius: 12px;
+}
+
+.backButton {
+  margin-top: 2rem;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 12px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
